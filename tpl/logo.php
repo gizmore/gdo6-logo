@@ -3,15 +3,19 @@
 use GDO\Logo\Module_Logo;
 use GDO\UI\GDT_HTML;
 
-$fileId = Module_Logo::instance()->cfgLogoId();
+$module = Module_Logo::instance();
+$fileId = $module->cfgLogoId();
 $href = href('Logo', 'Preview', '&file='.$fileId);
 $sitename = sitename();
-
+$width = $module->cfgLogoWidth();
+$height = $module->cfgLogoHeight();
 $html = <<<EOC
 <a href="/" title="$sitename">
   <img
    src="$href"
-   alt="Logo" />
+   alt="Logo"
+   width="$width"
+   height="$height" />
 </a>
 EOC;
 
